@@ -38,7 +38,7 @@ Create a new HTML [template](http://playframework.com/documentation/2.3.x/ScalaT
 
 ## Content Negotiation
 
-1. Modify the hello Action to support both HTML and Json based on the Accept header [see the Content-Negotiation documentation ](http://playframework.com/documentation/2.3.x/ScalaContentNegotiation).
+1. Modify the hello Action to support both HTML and Json based on the Accept header. [See: the Content-Negotiation documentation ](http://playframework.com/documentation/2.3.x/ScalaContentNegotiation).
 1. Test the action using curl.
 
 ## Login flow
