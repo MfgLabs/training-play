@@ -46,13 +46,16 @@ Create a new HTML [template](http://playframework.com/documentation/2.3.x/ScalaT
 1. Create a new Login controller
 1. Create the `login` Action and the `/login` route.
 	- It should return a HTML page containing a form. The form should have a login and a password field.
-1. Create the `authenticate` Action, and the `/authenticate` route. Leave it unimplemented for now using `def authnticate = TODO`.
+1. Create the `authenticate` Action, and the `/authenticate` route. Leave it unimplemented for now using `def authenticate = TODO`.
 1. Use the [reverse router](http://www.playframework.com/documentation/2.3.x/ScalaRouting) to set the `action` parameter of the form tag. The form should be submitted to `authenticate`.
 1. Implement `authenticate`. Make it check the username / password. The only valid values are "play" / "play".
-	- If the authentication is successful, redirect to the `hello` action (use the reverse router!), and add the username in the session.
+	- If the authentication is successful, redirect to the `hello` action (use the reverse router!), and add the username in the [session](http://www.playframework.com/documentation/2.3.x/ScalaSessionFlash).
 	- If the authentication fails, send a 401 status, and the login form. The login form should display an error message.
-
 
 ## Action composition
 
-[TODO](http://playframework.com/documentation/2.3.x/ScalaActionsComposition)
+1. The `hello` action should be authenticated. Use an [Action builder](http://playframework.com/documentation/2.3.x/ScalaActionsComposition) to create an `Authenticated` Action. This function will check the user authentication status.
+- If the session does not contain a username, the user is not logged-in and should be redirected to `login`
+- Otherwise, the user can access the requested resource.
+1. Compose this Action with `hello` to protect it from unauthorized access.
+1. Use the update the HTML template to show "Hello, <username>".
